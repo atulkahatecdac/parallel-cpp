@@ -36,7 +36,8 @@ $(BIN):
 intro_examples: $(BIN)/01_lambda_hello $(BIN)/01b_lambda_parallel_stl \
                 $(BIN)/02_template_hello $(BIN)/02b_complexity_classes \
                 $(BIN)/03_openmp_hello $(BIN)/04_openmp_parallel_for \
-                $(BIN)/05_pthreads_hello $(BIN)/06_mutex_hello $(BIN)/07_atomic_hello
+                $(BIN)/05_pthreads_hello $(BIN)/05_openmp_hello \
+                $(BIN)/06_mutex_hello $(BIN)/07_atomic_hello
 
 $(BIN)/01_lambda_hello: 00_intro_examples/01_lambda_hello.cpp | $(BIN)
 	$(CXX) $(CXXFLAGS) $< -o $@
@@ -58,6 +59,9 @@ $(BIN)/04_openmp_parallel_for: 00_intro_examples/04_openmp_parallel_for.cpp | $(
 
 $(BIN)/05_pthreads_hello: 00_intro_examples/05_pthreads_hello.cpp | $(BIN)
 	$(CXX) $(CXXFLAGS) $(PTFLAG) $< -o $@
+
+$(BIN)/05_openmp_hello: 00_intro_examples/05_openmp_hello.cpp | $(BIN)
+	$(CXX) $(CXXFLAGS) $(OMPFLAG) $< -o $@
 
 $(BIN)/06_mutex_hello: 00_intro_examples/06_mutex_hello.cpp | $(BIN)
 	$(CXX) $(CXXFLAGS) $(PTFLAG) $< -o $@
